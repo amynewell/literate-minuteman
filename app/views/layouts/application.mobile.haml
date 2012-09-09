@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    %title Literate Minuteman
+    %meta{ "name"=>"viewport", "content"=> "width=device-width, initial-scale=1"}
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js'
+    = stylesheet_link_tag 'http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css'
+    = csrf_meta_tags
+  %body
+    =yield

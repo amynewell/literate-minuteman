@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Mobylette::RespondToMobileRequests
+
   before_filter :find_user
   protect_from_forgery
 

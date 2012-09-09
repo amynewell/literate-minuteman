@@ -1,0 +1,28 @@
+%article{ "data-role" =>'page', "id"=>"all_books"}
+  %header{"data-role" => 'header'}
+    %a{href: '/'}
+      %h1 Literate Minuteman
+  %section{"data-role" =>'content'}
+    %ul{"data-role" =>'listview', "data-filter"=>"true"}
+      - @books.each do |book| 
+        %li
+          = book.title
+          = link_to book.author, '#' + "page-#{book[:id]}"
+
+
+- @books.each do |book|
+  %article{ "data-role" => "page", "id" => "page-#{book[:id]}"}
+    %header{"data-role" => 'header'}
+      %a{href: '/'}
+        %h1 Literate Minuteman
+        %h2=book.title
+        %section{"data-role" =>'content'}
+          %ul{"data-role" =>'listview'}
+            - copies = @user.locations.any? ? book.copies.at_location(@user.locations) : book.copies
+            - copies.group_by(&:title).each do |title, copies|
+              - available = copies.select {|c| c.status == "In"}.sort_by! {|c| c.location.name }
+              - available.each do |copy| 
+                %li
+                  %b=copy.location.name 
+                  =copy.call_number
+

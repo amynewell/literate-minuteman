@@ -10,6 +10,8 @@ gem 'dynamic_form'
 gem 'resque'
 gem 'resque-scheduler'
 gem 'will_paginate'
+gem 'mobylette'
+gem 'jquery_mobile_rails'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
